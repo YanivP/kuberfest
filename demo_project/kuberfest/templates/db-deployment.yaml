@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {DB_DEPLOYMENT_NAME}
+  namespace: {NAMESPACE}
+spec:
+  selector:
+    matchLabels:
+      app: {DB_APP_NAME}
+  template:
+    metadata:
+      labels:
+        app: {DB_APP_NAME}
+    spec:
+      containers:
+        - image: "postgres:9.6.2"
+          name: {NAMESPACE}
+          env:
+            - name: POSTGRES_USER
+              value: "{DB_USERNAME}"
+            - name: POSTGRES_PASSWORD # TODO: In production use an encrypted source
+              value: "{DB_PASSWORD}"
+          ports:
+            - containerPort: {DB_PORT}
+              name: {DB_PORT_NAME}
+          volumeMounts:
+            - name: {DB_STORAGE_NAME}
+              mountPath: /var/lib/posgresql/db-data
+      volumes:
+        - name: {DB_STORAGE_NAME}
+          persistentVolumeClaim: 
+            claimName: {DB_PV_CLAIM_NAME}

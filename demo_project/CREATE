@@ -1,0 +1,5 @@
+psql: warning: extra command-line argument "service" ignored
+psql (9.6.2)
+Type "help" for help.
+
+postgres=# 

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {API_SERVICE_NAME}
+  namespace: {NAMESPACE}
+spec:
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: {API_SERVICE_PORT} # TODO: Try using app-port instead
+      targetPort: {API_SERVICE_TARGET_PORT} # TODO: Try using app-port instead
+      nodePort: {API_SERVICE_NODE_PORT}
+  selector:
+    app: {API_APP_NAME}

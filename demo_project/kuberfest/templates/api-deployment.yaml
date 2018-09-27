@@ -1,0 +1,35 @@
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {API_DEPLOYMENT_NAME}
+  namespace: {NAMESPACE}
+spec:
+  replicas: {API_DEPLOYMENT_REPLICAS}
+  selector:
+    matchLabels:
+      app: {API_APP_NAME}
+  template:
+    metadata:
+      labels:
+        app: {API_APP_NAME}
+    spec:
+      containers:
+        - image: "yanivpeer/kuberfest-demo-project"
+          name: {API_CONTAINER_NAME}
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: {API_ASPNETCORE_ENVIRONMENT}
+            - name: DB_SERVER
+              value: {DB_SERVER}
+            - name: DB_PORT
+              value: "{DB_PORT}"
+            - name: DB_USERNAME
+              value: {DB_USERNAME}
+            - name: DB_PASSWORD
+              value: "{DB_PASSWORD}"
+            - name: DB_DATABASE
+              value: {DB_DATABASE}
+          ports:
+            - containerPort: {DB_PORT}
+              name: {DB_PORT_NAME}
