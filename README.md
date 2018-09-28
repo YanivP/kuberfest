@@ -5,7 +5,7 @@ A lightweight cloud development framework built around Kubernetes.
 
 Kuberfest lets you easily run a local Kubernetes environment, test your deployment in Minikube, and export it as a YAML for a production Kubernetes cluster deployment.
 
-The framework attempts to solve the following real world problems:
+The framework attempts to automate the following real world problems:
 1. Differences between dev and production environments are a source for bugs.
 2. Syncing the dev environment between team members is challenging and often results in breaks.
 3. Maintaining a complex "setup" readme file is tedious and often results in outdated information.
