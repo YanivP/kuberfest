@@ -1,7 +1,7 @@
 # Kuberfest Framework
 A cloud development framework for developers who want enough time for beer.
 
-Less work = more time = more beer! 🍺
+Less work = more time for beer! 🍺
 
 ## Intro
 
