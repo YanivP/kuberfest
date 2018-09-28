@@ -7,4 +7,4 @@
   * Kubernetes
   * Minikube
   * VMWare
-* Add an auto downloader/installer.
+* Add an auto downloader/installer with a project generator.
