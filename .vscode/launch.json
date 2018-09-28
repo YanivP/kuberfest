@@ -9,7 +9,7 @@
             "type": "python",
             "request": "launch",
             "program": "${workspaceRoot}/kuberfest/run.py",
-            "args": ["demo_project", "--delete"],
+            "args": ["demo_project", "--help"],
             "console": "integratedTerminal",
             "cwd": "${workspaceRoot}",
         },
