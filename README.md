@@ -1,7 +1,5 @@
 # Kuberfest Framework
-A cloud development framework for developers who want enough time for beer.
-
-Less work = more time for beer! 🍺
+A lightweight cloud development framework built around Kubernetes.
 
 ## Intro
 
