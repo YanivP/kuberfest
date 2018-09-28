@@ -1,8 +1,7 @@
-* Add an environment variable file which will inject automatically into the yaml.
-* Consider ability to create a remote environment whenever the project is built (using docker-hub hooks).
-* Generate a migrations server for deployment
-* Fix issue with Postgres not really persistent.
-* Decide external IP through python script.
+### Planned features: ###
+* Set up a simple CI/CD to a real AWS Kubernetes cluster in order to prove the concept.
+* Generate a migrations server for deployments as a prove of concept it can include.
+* Fix issue with Postgres not persisting after restarting a pod.
 * Create python script for downloading all dependencies.
   * Python
   * Kubernetes
