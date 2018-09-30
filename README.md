@@ -43,6 +43,7 @@ This framework is developed as a way to thoroughly study Kubernetes and on-the-w
 ### * What do I need to know before using Kuberfest?
 1. Learn [how to dockerize your application](https://docs.docker.com/engine/reference/builder/)
 2. Learn [how to configure a kubernetes cluster](https://kubernetes.io/docs/concepts/configuration/)
+3. Run a Kubernetes cluster, [such as Amazon EKS](https://aws.amazon.com/getting-started/projects/deploy-kubernetes-app-amazon-eks/)
  
 ### * Does my project need to be written in Python?
 Nope, use any programming language or framework.
