@@ -40,13 +40,13 @@ python kuberfest/run.py demo_project --start-minikube --delete --build --deploy 
 This framework is developed as a way to thoroughly study Kubernetes and on-the-way automate some of the processes in professional projects I'm working on. If you have any comments on the way I'm doing things don't hesitate to shoot me an email :)
 
 ## QA
-### * What do I need to know before using Kuberfest?
+### What do I need to know before using Kuberfest?
 1. Learn [how to dockerize your application](https://docs.docker.com/engine/reference/builder/).
 2. Learn [how to configure a kubernetes cluster](https://kubernetes.io/docs/concepts/configuration/).
 3. Run a Kubernetes cluster, [such as Amazon EKS](https://aws.amazon.com/getting-started/projects/deploy-kubernetes-app-amazon-eks/).
  
-### * Does my project need to be written in Python?
+### Does my project need to be written in Python?
 Nope, use any programming language or framework.
 
-### * Why is the demo project written in DotNet Core?
+### Why is the demo project written in DotNet Core?
 Why are you asking weird questions?
