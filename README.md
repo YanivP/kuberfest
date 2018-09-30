@@ -1,5 +1,5 @@
 # Kuberfest Framework (WIP)
-A lightweight framework for cloud development.
+A lightweight framework for fast cloud development.
 
 ## Intro
 
