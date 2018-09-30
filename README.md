@@ -1,5 +1,5 @@
 # Kuberfest Framework
-A lightweight cloud development framework built around Kubernetes.
+A lightweight framework for cloud development.
 
 ## Intro
 
