@@ -30,11 +30,7 @@ WIP
 
 ## How to use Kuberfest framework
 ### Through terminal:
-python kuberfest/run.py demo_project --start-minikube --delete --build --deploy --init-db
-
-### Through VS Code:
-1. Load the root folder in VS Code.
-2. Use 'Run demo project' debug profile.
+python kuberfest/run.py --help
 
 ## Motivation
 This framework is developed as a way to thoroughly study Kubernetes and on-the-way automate some of the processes in professional projects I'm working on. If you have any comments on the way I'm doing things don't hesitate to shoot me an email :)
