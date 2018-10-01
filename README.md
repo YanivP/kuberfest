@@ -15,7 +15,7 @@ The framework attempts to automate the following real world problems:
 Kuberfest is programming language and framework agnostic. Kuberfest itself is built in Python 3.6.
 
 ## Current version
-0.0.1a
+0.0.1a (do not use this for anything yet)
 
 ## Requirements
 * pip
