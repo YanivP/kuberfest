@@ -44,5 +44,5 @@ This framework is developed as a way to thoroughly study Kubernetes and on-the-w
 ### Does my project need to be written in Python?
 Nope, use any programming language or framework.
 
-### * Why is the demo project written in DotNet Core?
+### Why is the demo project written in DotNet Core?
 For the sake of POC I'll add different kinds of platforms.
