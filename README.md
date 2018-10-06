@@ -5,7 +5,7 @@ A lightweight framework for fast cloud development.
 
 Kuberfest lets you easily run a local Kubernetes environment, test your deployment in Minikube, and export it as a YAML for a production Kubernetes cluster deployment.
 
-The framework attempts to automate the following real world problems:
+The framework attempts to solve the following real world problems through automation:
 1. Differences between dev and production environments are a source for bugs.
 2. Syncing the dev environment between team members is challenging and often results in breaks.
 3. Maintaining a complex "setup" readme file is tedious and often results in outdated information.
@@ -45,4 +45,4 @@ This framework is developed as a way to thoroughly study Kubernetes and on-the-w
 Nope, use any programming language or framework.
 
 ### Why is the demo project written in DotNet Core?
-For the sake of POC I'll add different kinds of platforms.
+This is simply a first of multiple POCs that will come later once the framework is more mature.
