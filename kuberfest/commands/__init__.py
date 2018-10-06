@@ -16,6 +16,11 @@ commands = {
         'description': 'Print all the arguments.',
         'stopper': True,
     },
+    'context': {
+        'description': 'Switch Kubernetes context',
+        'default': True,
+        'hidden': True,
+    },
     'delete': {
         'description': 'Delete the kubernetes namespace.'
     },

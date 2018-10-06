@@ -9,7 +9,7 @@
             "type": "python",
             "request": "launch",
             "program": "${workspaceRoot}/kuberfest/run.py",
-            "args": ["demo_project", "--help"],
+            "args": ["dotnet_demo_project", "--build", "--push", "--deploy", "--init-db", "--start-minikube"],
             "console": "integratedTerminal",
             "cwd": "${workspaceRoot}",
         },

@@ -8,8 +8,27 @@ import commands
 def get_project_dir():
     return sys.argv[1]
 
-sys.path.append("{0}/{1}".format(get_project_dir(), kuberfest_dir))
-import settings as project_settings
+def debug(text):
+    print(">>> {text}".format(text=text))
+
+# Import project settings
+try:
+    project_dir = "{0}/{1}".format(get_project_dir(), kuberfest_dir)
+    debug("Importing project settings at '{}'...".format(project_dir))
+    sys.path.append(project_dir)
+    import settings as project_settings
+except ModuleNotFoundError:
+    debug("Project dir not found at '{}'".format(project_dir))
+    exit()
+
+_config = 'minikube'
+def switch_config(config_name):
+    _config = config_name
+    os.system(
+        'kubectl config use-context {context}'.format(
+            context=_config
+        )
+    )
 
 _is_development = False
 def set_development(is_development):
@@ -21,14 +40,20 @@ def is_development():
     return _is_development
 
 def get_variables():
-    import variables
-    return variables.__dict__
+    try:
+        import variables
+        return variables.__dict__
+    except ModuleNotFoundError:
+        debug("You must have a 'variables.py' file in your project's 'kuberfest' folder")
+        exit()
 
 def get_variable(variable_name):
-    return get_variables()[variable_name]
+    variables = get_variables()
+    if variable_name not in variables:
+        debug("Variable '{}' not found".format(variable_name))
+        exit()
 
-def debug(text):
-    print(">>> {text}".format(text=text))
+    return variables[variable_name]
 
 def delete_tmp_dir():
     os.system('rm -r {0}/{1}'.format(get_project_dir(), project_settings.output_dir))
@@ -115,4 +140,8 @@ def wait_for_deployments(namespace, deployments, yaml_file_name):
             break
 
 def delete_namespace(namespace):
-    os.system('kubectl delete namespaces {0}'.format(namespace))
+    os.system(
+        'kubectl delete namespaces {namespace}'.format(
+            namespace=namespace
+        )
+    )

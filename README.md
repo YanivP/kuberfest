@@ -48,4 +48,4 @@ This framework is developed as a way to thoroughly study Kubernetes and on-the-w
 Nope, use any programming language or framework.
 
 ### * Why is the demo project written in DotNet Core?
-Why are you asking weird questions?
+For the sake of POC I'll add different kinds of platforms.

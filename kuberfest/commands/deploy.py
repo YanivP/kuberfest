@@ -4,6 +4,7 @@ import settings
 
 def run():
     tools.debug("Setting up kubernetes yamls...")
+
     tools.delete_tmp_dir()
     yamls = list()
     for yaml_file_name in settings.template_file_names:

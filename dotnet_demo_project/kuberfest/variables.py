@@ -1,10 +1,13 @@
 from tools import is_development
 
+# Kubernetes context
+CONTEXT='minikube'
+
 # Docker hub
-REPOSITORY='yanivpeer/kuberfest-demo-project'
+REPOSITORY='kuberfest/dotnet-demo-project'
 
 # Namespace
-NAMESPACE='kuberfest-demo-project'
+NAMESPACE='kuberfest-dotnet-demo-project'
 
 # API
 API_NAME='api'
