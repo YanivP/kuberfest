@@ -3,7 +3,7 @@ from tools import get_variables, debug, get_project_dir
 from settings import kuberfest_dir
 
 
-def wait_for_db(namespace, db_pod):
+def wait_for_db(project, namespace, db_pod):
     debug("Waiting for postgres at: ... {0}".format(get_variables()['DB_CONNECTION_STRING']))
     while (True):
         result=os.popen(
@@ -17,7 +17,7 @@ def wait_for_db(namespace, db_pod):
         if 'could not connect to server' not in result:
             break
 
-def create_db(namespace, db_pod, database):
+def create_db(project, namespace, db_pod, database):
     debug("Creating Database...")
     os.system(
         'kubectl exec -it --namespace={namespace} {pod} -- psql {connection_string} -c "CREATE DATABASE {database};"'.format(
@@ -28,7 +28,7 @@ def create_db(namespace, db_pod, database):
         )
     )
 
-def init_schema(namespace, db_pod, sql_init_file_path):
+def init_schema(project, namespace, db_pod, sql_init_file_path):
     debug("Copying migration file to the pod...")
     sql_init_file_name = sql_init_file_path.split("/")[-1]
     os.system(
@@ -51,7 +51,7 @@ def init_schema(namespace, db_pod, sql_init_file_path):
         )
     )
 
-def init_db(namespace, db_pod):
+def init_db(project, namespace, db_pod):
     wait_for_db(
         namespace=namespace, 
         db_pod=db_pod
@@ -64,5 +64,5 @@ def init_db(namespace, db_pod):
     init_schema(
         namespace=namespace, 
         db_pod=db_pod,
-        sql_init_file_path="{0}/{1}/init.sql".format(get_project_dir(), kuberfest_dir)
+        sql_init_file_path="{0}/{1}/init.sql".format(project.dir, kuberfest_dir)
     )

@@ -3,9 +3,9 @@ import os
 
 def run(project):
     tools.debug("Building container...")
-    repository = tools.get_variable('REPOSITORY')
+    repository = project.get_variable('REPOSITORY')
     cwd = os.getcwd()
-    os.chdir(tools.get_project_dir())
+    os.chdir(project.dir)
     os.system(
         'docker-compose build --build-arg "-t {} ."'.format(repository)
     )

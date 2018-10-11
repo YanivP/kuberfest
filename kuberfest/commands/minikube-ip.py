@@ -10,7 +10,7 @@ def run(project):
             "You can access the app through: {address}".format(
                 address='http://{ip}:{port}/api/values'.format(
                     ip=ip, 
-                    port=tools.get_variables()['API_SERVICE_NODE_PORT']
+                    port=project.get_variable('API_SERVICE_NODE_PORT')
                 )
             )
         )

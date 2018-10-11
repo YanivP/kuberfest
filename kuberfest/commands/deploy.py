@@ -8,10 +8,10 @@ def run(project):
 
     yaml_tool = YamlTool(project)
 
-    tools.delete_tmp_dir()
+    project.delete_tmp_dir()
     yamls = list()
     for yaml_file_name in settings.template_file_names:
-        yamls.append(yaml_tool.get_yaml(yaml_file_name, **tools.get_variables()))
+        yamls.append(yaml_tool.get_yaml(yaml_file_name, **project.get_variables()))
     yaml_tool.merge_yamls(yamls, settings.output_yaml_file_name)
     yaml_tool.run_yaml(settings.output_yaml_file_name)
 
@@ -22,8 +22,7 @@ def run(project):
         deployments.append(deployment_data['metadata']['name'])
 
     tools.wait_for_deployments(
-        yaml_file_name=yaml_file_name,
-        namespace=tools.get_variables()['NAMESPACE'],
+        namespace=project.get_variable('NAMESPACE'),
         deployments=deployments,
     )
 

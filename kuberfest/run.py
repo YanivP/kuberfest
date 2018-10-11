@@ -10,10 +10,7 @@ if len(sys.argv) < 2 or '--' in sys.argv[1]:
     exit()
 
 # Build project object
-project = Project(
-    project_dir = sys.argv[1],
-    project_settings = tools.get_project_settings()
-)
+project = Project(sys.argv[1])
 
 # Run commands
 command_controller = CommandsController(project)
