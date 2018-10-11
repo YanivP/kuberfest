@@ -1,10 +1,13 @@
 import tools
+from tools.kubernetes import KubernetesTool
 import os
 import settings
-from tools.yaml_tool import YamlTool
+from tools.yaml import YamlTool
+from tools.debug import Debug
+
 
 def run(project):
-    tools.debug("Setting up kubernetes yamls...")
+    Debug.info("Setting up kubernetes yamls...")
 
     yaml_tool = YamlTool(project)
 
@@ -21,9 +24,8 @@ def run(project):
     for deployment_data in deployments_data:
         deployments.append(deployment_data['metadata']['name'])
 
-    tools.wait_for_deployments(
+    kubernetes_tool = KubernetesTool(project)
+    return kubernetes_tool.wait_for_deployments(
         namespace=project.get_variable('NAMESPACE'),
         deployments=deployments,
     )
-
-    return True

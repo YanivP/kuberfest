@@ -1,6 +1,8 @@
 import importlib
 import sys
 import tools
+from tools.debug import Debug
+
 
 # Commands will be run in the same order of the dictionary
 commands = {
@@ -81,7 +83,7 @@ class CommandsController:
         for command in commands.keys():
             if 'default' in commands[command] and commands[command]['default'] or '--{}'.format(command) in sys.argv:
                 if not self.run_command(command):
-                    tools.debug('Stopped with partial results.')
+                    Debug.error('Stopped with partial results.')
                     return
 
             if 'stopper' in commands[command] and commands[command]['stopper'] and '--{}'.format(command) in sys.argv:

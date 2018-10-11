@@ -1,5 +1,5 @@
 from consts import kuberfest_dir
-from tools import debug
+from tools.debug import Debug
 import sys
 import os
 
@@ -9,17 +9,18 @@ class Project:
         self.dir = project_dir
         self.settings = self.get_project_settings()
         self._is_development = False
+        self.variables = None
 
     def get_project_settings(self):
         try:
             project_dir = "{0}/{1}".format(self.dir, kuberfest_dir)
-            debug("Importing project settings at '{}'...".format(project_dir))
+            Debug.info("Importing project settings at '{}'...".format(project_dir))
             sys.path.append(project_dir)
             import settings as project_settings
             return project_settings
 
         except ModuleNotFoundError:
-            debug("Project dir not found at '{}'".format(project_dir))
+            Debug.info("Project dir not found at '{}'".format(project_dir))
 
     def delete_tmp_dir(self):
         os.system('rm -r {0}/{1}'.format(self.dir, self.settings.output_dir))
@@ -32,11 +33,15 @@ class Project:
         return self._is_development
 
     def get_variables(self):
+        if self.variables is not None:
+            return self.variables
+
         try:
+            # TODO: Find a way to parse the variables file with parameters
             import variables
             return variables.__dict__
         except ModuleNotFoundError:
-            debug("You must have a 'variables.py' file in your project's 'kuberfest' folder")
+            Debug.info("You must have a 'variables.py' file in your project's 'kuberfest' folder")
             exit()
 
     def get_variable(self, variable_name):
@@ -46,10 +51,3 @@ class Project:
             exit()
 
         return variables[variable_name]
-
-    def delete_namespace(self, namespace):
-        os.system(
-            'kubectl delete namespaces {namespace}'.format(
-                namespace=namespace
-            )
-        )

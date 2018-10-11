@@ -1,9 +1,9 @@
-from tools.project_tool import ProjectTool
+from tools.base import BaseTool
 import os
 import yaml as yaml_module
 
 
-class YamlTool(ProjectTool):
+class YamlTool(BaseTool):
     def get_yaml(self, yaml_file_name, **kwargs):
         with open(
             "{project_dir}/{templates_dir}/{yaml_file_name}".format(

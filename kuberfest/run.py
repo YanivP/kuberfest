@@ -2,11 +2,12 @@ from commands import CommandsController
 import sys
 from project import Project
 import tools
+from tools.debug import Debug
+
 
 # First argument must be the project
-project_dir_error_message = "First argument must be a project directory"
 if len(sys.argv) < 2 or '--' in sys.argv[1]:
-    tools.debug(project_dir_error_message)
+    Debug.error("First argument must be a project directory")
     exit()
 
 # Build project object

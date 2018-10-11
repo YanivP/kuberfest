@@ -1,9 +1,11 @@
 import tools
 import os
 import settings
+from tools.debug import Debug
+
 
 def run(project):
-    tools.debug("Pushing docker file...")
+    Debug.info("Pushing docker file...")
     cwd = os.getcwd()
     os.chdir(project.dir)
     os.system(

@@ -2,11 +2,13 @@ import tools
 import os
 import settings
 import commands
+from tools.debug import Debug
+
 
 def run(project):
     ip=os.popen('minikube ip').read().strip()
     if ip != '':
-        tools.debug(
+        Debug.info(
             "You can access the app through: {address}".format(
                 address='http://{ip}:{port}/api/values'.format(
                     ip=ip, 
@@ -15,6 +17,6 @@ def run(project):
             )
         )
     else:
-        tools.debug("Minikube is unavailable")
+        Debug.error("Minikube is unavailable")
 
     return True

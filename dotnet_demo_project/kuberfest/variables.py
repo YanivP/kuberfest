@@ -13,7 +13,7 @@ API_DEPLOYMENT_NAME='{0}-deployment'.format(API_NAME)
 API_DEPLOYMENT_REPLICAS=3
 API_APP_NAME='{0}-app'.format(API_NAME)
 API_CONTAINER_NAME='{0}-container'.format(API_NAME)
-# API_ASPNETCORE_ENVIRONMENT='Development' if is_development() else 'Production'
+# API_ASPNETCORE_ENVIRONMENT='Development' if project.is_development() else 'Production'
 # TODO: This
 API_ASPNETCORE_ENVIRONMENT='Development'
 
