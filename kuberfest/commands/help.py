@@ -4,7 +4,7 @@ import settings
 import commands
 import collections
 
-def run():
+def run(project):
     ordered_arguments = collections.OrderedDict(sorted(commands.commands.items()))
 
     print("\nThe following arguments are available:")

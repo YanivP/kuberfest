@@ -3,7 +3,7 @@ import os
 import settings
 import commands
 
-def run():
+def run(project):
     ip=os.popen('minikube ip').read().strip()
     if ip != '':
         tools.debug(

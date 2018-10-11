@@ -1,7 +1,7 @@
 import tools
 import os
 
-def run():
+def run(project):
     tools.debug("Building container...")
     repository = tools.get_variable('REPOSITORY')
     cwd = os.getcwd()

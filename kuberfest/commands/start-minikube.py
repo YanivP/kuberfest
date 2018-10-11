@@ -1,6 +1,6 @@
 import os
 
-def run():
+def run(project):
     if os.popen('minikube ip').read().strip() == '':
         os.system('minikube start')
 

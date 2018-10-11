@@ -1,7 +1,7 @@
 import tools
 import os
 
-def run():
+def run(project):
     function_unavailable_error = "--init-db command requires a 'functions.py' module with an 'init_db(namespace, db_pod)' function"
     try:
         import functions as project_functions

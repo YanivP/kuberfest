@@ -1,7 +1,7 @@
 import tools
 import os
 
-def run():
+def run(project):
     tools.debug('Switching Kubernetes context...')
     context = tools.get_variable('CONTEXT')
 
