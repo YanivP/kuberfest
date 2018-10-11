@@ -1,6 +1,5 @@
 from tools.base import BaseTool
 import os
-import yaml as yaml_module
 from tools.debug import Debug
 
 
@@ -55,5 +54,17 @@ class KubernetesTool(BaseTool):
         os.system(
             'kubectl delete namespaces {namespace}'.format(
                 namespace=namespace
+            )
+        )
+
+    def run_yaml(self, yaml_file_name, **kwargs):
+        '''
+        Apply a yaml file on Kubernetes.
+        '''
+        os.system(
+            'kubectl apply -f {project_dir}/{output_dir}/{yaml_file_name}'.format(
+                project_dir=self.project.dir,
+                output_dir=self.project.settings.output_dir,
+                yaml_file_name=yaml_file_name,
             )
         )

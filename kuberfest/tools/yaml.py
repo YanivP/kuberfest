@@ -4,7 +4,15 @@ import yaml as yaml_module
 
 
 class YamlTool(BaseTool):
+'''
+Tool for reading, manipulating and parsing Kubernetes related yaml files.
+'''
+
     def get_yaml(self, yaml_file_name, **kwargs):
+        '''
+        Retrieves a single yaml file content from the project dir.
+        Use **kwargs to set the yaml file variables.
+        '''
         with open(
             "{project_dir}/{templates_dir}/{yaml_file_name}".format(
                 project_dir=self.project.dir,
@@ -15,6 +23,10 @@ class YamlTool(BaseTool):
             return yaml_string.format(**kwargs)
 
     def merge_yamls(self, yamls_list, output_file_name):
+        '''
+        Merges multiple yamls files to a single output file.
+        Used for deploying an entire Kubernetes cluster together.
+        '''
         all_yaml_strings = ''
         for yaml_string in yamls_list:
             all_yaml_strings += '---\n{0}\n\n'.format(yaml_string.strip())
@@ -29,16 +41,10 @@ class YamlTool(BaseTool):
         ) as yaml_file:
             yaml_file.write(all_yaml_strings)
 
-    def run_yaml(self, yaml_file_name, **kwargs):
-        os.system(
-            'kubectl apply -f {project_dir}/{output_dir}/{yaml_file_name}'.format(
-                project_dir=self.project.dir,
-                output_dir=self.project.settings.output_dir,
-                yaml_file_name=yaml_file_name,
-            )
-        )
-
     def get_yaml_types(self, yaml_string, yaml_type):
+        '''
+        Return a list of Kubernetes configs of certain types from a yaml string.
+        '''
         ret_list = list()
         
         yamls = yaml_string.split('---')
@@ -51,6 +57,9 @@ class YamlTool(BaseTool):
         return ret_list
 
     def get_output_yaml(self):
+        '''
+        Returns the output yaml file as string.
+        '''
         with open(
             '{}/{}/{}'.format(
                 self.project.dir, 
