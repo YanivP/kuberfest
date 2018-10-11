@@ -1,7 +1,7 @@
 import tools
 import os
 import settings
-from yaml_tool import YamlTool
+from tools.yaml_tool import YamlTool
 
 def run(project):
     tools.debug("Setting up kubernetes yamls...")
