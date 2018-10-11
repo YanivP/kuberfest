@@ -7,9 +7,9 @@ import os
 class Project:
     def __init__(self, project_dir):
         self.dir = project_dir
-        self.settings = self.get_project_settings()
         self._is_development = False
-        self.variables = None
+        self.settings = self.get_project_settings()
+        self.variables = self.get_project_variables() 
 
     def get_project_settings(self):
         try:
@@ -32,10 +32,7 @@ class Project:
     def is_development(self):
         return self._is_development
 
-    def get_variables(self):
-        if self.variables is not None:
-            return self.variables
-
+    def get_project_variables(self):
         try:
             # TODO: Find a way to parse the variables file with parameters
             import variables
@@ -45,7 +42,7 @@ class Project:
             exit()
 
     def get_variable(self, variable_name):
-        variables = self.get_variables()
+        variables = self.get_project_variables()
         if variable_name not in variables:
             debug("Variable '{}' not found".format(variable_name))
             exit()

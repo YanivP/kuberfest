@@ -15,7 +15,7 @@ def run(project):
     project.delete_tmp_dir()
     yamls = list()
     for yaml_file_name in settings.template_file_names:
-        yamls.append(yaml_tool.get_yaml(yaml_file_name, **project.get_variables()))
+        yamls.append(yaml_tool.get_yaml(yaml_file_name, **project.variables)
     yaml_tool.merge_yamls(yamls, settings.output_yaml_file_name)
     kubernetes_tool.run_yaml(settings.output_yaml_file_name)
 
