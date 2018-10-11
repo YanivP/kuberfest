@@ -4,6 +4,10 @@ from tools.debug import Debug
 
 
 class KubernetesTool(BaseTool):
+    '''
+    Tool for various Kubernetes activities.
+    '''
+
     def switch_config(self, config_name):
         os.system(
             'kubectl config use-context {context}'.format(
