@@ -4,13 +4,13 @@ from settings import kuberfest_dir
 
 
 def wait_for_db(project, namespace, db_pod):
-    debug("Waiting for postgres at: ... {0}".format(get_variables()['DB_CONNECTION_STRING']))
+    debug("Waiting for postgres at: ... {0}".format(project.get_variable('DB_CONNECTION_STRING')))
     while (True):
         result=os.popen(
             'kubectl exec -it --namespace={namespace} {pod} -- psql {connection_string} -c "\q"'.format(
                 namespace=namespace,
                 pod=db_pod,
-                connection_string=get_variables()['DB_CONNECTION_STRING'],
+                connection_string=project.get_variable('DB_CONNECTION_STRING'),
             )
         ).read()
 
@@ -23,7 +23,7 @@ def create_db(project, namespace, db_pod, database):
         'kubectl exec -it --namespace={namespace} {pod} -- psql {connection_string} -c "CREATE DATABASE {database};"'.format(
             namespace=namespace,
             pod=db_pod,
-            connection_string=get_variables()['DB_CONNECTION_STRING'],
+            connection_string=project.get_variable('DB_CONNECTION_STRING'),
             database=database,
         )
     )
@@ -45,9 +45,9 @@ def init_schema(project, namespace, db_pod, sql_init_file_path):
         'kubectl exec -it --namespace={namespace} {pod} -- psql {connection_string}/{database} -f /{sql_init_file_name}'.format(
             namespace=namespace,
             pod=db_pod,
-            connection_string=get_variables()['DB_CONNECTION_STRING'],
+            connection_string=project.get_variable('DB_CONNECTION_STRING'),
             sql_init_file_name=sql_init_file_name,
-            database=get_variables()['DB_DATABASE'],
+            database=get_variable('DB_DATABASE'),
         )
     )
 
@@ -57,11 +57,13 @@ def init_db(project, namespace, db_pod):
         db_pod=db_pod
     )
     create_db(
+        project=project,
         namespace=namespace,
         db_pod=db_pod, 
-        database=get_variables()['DB_DATABASE']
+        database=project.get_variable('DB_DATABASE')
     )
     init_schema(
+        project=project,
         namespace=namespace, 
         db_pod=db_pod,
         sql_init_file_path="{0}/{1}/init.sql".format(project.dir, kuberfest_dir)

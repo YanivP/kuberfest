@@ -16,6 +16,7 @@ def run(project):
         else:
             db_pod = kubernetes_tool.get_pods(namespace=tools.get_variable('NAMESPACE'), app_name=tools.get_variable('DB_APP_NAME')[0]
             project_functions.init_db(
+                project=project,
                 namespace=tools.get_variable('NAMESPACE'),
                 db_pod=db_pod
             )
