@@ -26,6 +26,7 @@ class KubernetesTool(BaseTool):
 
                 print(status)
                 
+                # TODO: This is currently not working, find a way to read this line
                 if 'error: deployment "{}" exceeded its progress deadline'.format(deployment) in status:
                     # TODO: Possible fallback here
                     Debug.error('Something went wrong with Kubernetes.')
