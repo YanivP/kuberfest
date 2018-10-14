@@ -147,11 +147,10 @@ class CommandsController:
         return CommandsController.parsed_arguments
 
     def _run_command(self, command, values):
-        if command in commands:
-            i = importlib.import_module('commands.' + command)
-            result = i.run(self.project, values)
-            if not result:
-                return False
+        i = importlib.import_module('commands.' + command)
+        result = i.run(self.project, values)
+        if not result:
+            return False
 
         return True
 
