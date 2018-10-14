@@ -6,81 +6,105 @@ import argparse
 
 # Commands will be run in the same order of the dictionary
 commands = {
-    'dev': {
-        'description': 'Run as a development environment.',
+    'development': {
+        'short': 'dev',
+        'description': 'run as a development environment.',
+        'const': False,
+        'default': False,
         'action': 'store',
         'type': bool,
+        'nargs': '?',
     },
     'print_environment': {
-        'description': 'Print the deployment environment.',
+        'short': 'pc',
+        'description': 'print the deployment environment.',
         'const': True,
         'default': True,
         'hidden': True,
         'action': 'store',
         'type': bool,
+        'nargs': '?',
     },
     'context': {
-        'description': 'Switch Kubernetes context',
+        'short': 'c',
+        'description': 'switch Kubernetes context',
         'default': 'minikube',
         'action': 'store',
         'type': str,
+        'nargs': '?',
     },
     'delete': {
-        'description': 'Delete the kubernetes namespace.',
+        'short': 'del',
+        'description': 'delete the kubernetes namespace.',
         'const': True,
         'default': False,
         'action': 'store',
         'type': bool,
+        'nargs': '?',
     },
     'start_minikube': {
-        'description': 'Start minikube as part of the deployment.',
+        'short': 'smkb',
+        'description': 'start minikube as part of the deployment.',
         'const': True,
         'default': False,
         'action': 'store',
         'type': bool,
+        'nargs': '?',
     },
     'build': {
-        'description': 'Build the project and container.',
+        'short': 'b',
+        'description': 'build the project and container.',
         'const': True,
         'default': False,
         'action': 'store',
         'type': bool,
+        'nargs': '?',
     },
     'push': {
-        'description': 'Push the docker to the repository.',
+        'short': 'p',
+        'description': 'push the docker to the repository.',
         'const': True,
         'default': False,
         'action': 'store',
         'type': bool,
+        'nargs': '?',
     },
     'deploy': {
-        'description': 'Deploy kubernetes yamls.',
+        'short': 'd',
+        'description': 'deploy kubernetes yamls.',
         'const': True,
         'default': False,
         'action': 'store',
         'type': bool,
+        'nargs': '?',
     },
     'init_db': {
-        'description': 'After deployment, also initialize the database and schema.',
+        'short': 'idb',
+        'description': 'after deployment, also initialize the database and schema.',
         'const': True,
         'default': False,
         'action': 'store',
         'type': bool,
+        'nargs': '?',
     },
-    'dev': {
-        'description': 'Build a development environment.',
+    'development': {
+        'short': 'dev',
+        'description': 'build a development environment.',
         'const': True,
         'default': False,
         'action': 'store',
         'type': bool,
+        'nargs': '?',
     },
     'minikube_ip': {
-        'description': 'Print minikube ip.',
+        'short': 'mkbip',
+        'description': 'print minikube ip.',
         'const': True,
         'default': True,
         'hidden': True,
         'action': 'store',
         'type': bool,
+        'nargs': '?',
     }
 }
 
@@ -103,7 +127,7 @@ class CommandsController:
 
         # Project dir argument
         parser.add_argument(
-            'project-dir', 
+            'project_dir', 
             nargs=1,
             action='store',
             help='Project app directory',
@@ -112,8 +136,10 @@ class CommandsController:
         # Commands arguments
         for command, command_data in commands.items():
             parser.add_argument(
+                '-{}'.format(command_data['short']),
                 '--{}'.format(command),
-                nargs='?',
+                metavar=str(command_data['type'])[8:-2],
+                nargs=command_data['nargs'],
                 action=command_data['action'],
                 # Uses this vlaue if arg appears, but no explicit value is given 
                 const=command_data['const'] if 'const' in command_data else None,
