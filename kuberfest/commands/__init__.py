@@ -8,69 +8,79 @@ import argparse
 commands = {
     'dev': {
         'description': 'Run as a development environment.',
-        'is_flag': True,
         'action': 'store',
+        'type': bool,
     },
     'print_environment': {
         'description': 'Print the deployment environment.',
+        'const': True,
         'default': True,
         'hidden': True,
-        'is_flag': True,
         'action': 'store',
+        'type': bool,
     },
     'context': {
         'description': 'Switch Kubernetes context',
         'default': 'minikube',
         'action': 'store',
+        'type': str,
     },
     'delete': {
         'description': 'Delete the kubernetes namespace.',
+        'const': True,
         'default': False,
-        'is_flag': True,
         'action': 'store',
+        'type': bool,
     },
     'start_minikube': {
         'description': 'Start minikube as part of the deployment.',
+        'const': True,
         'default': False,
-        'is_flag': True,
         'action': 'store',
+        'type': bool,
     },
     'build': {
         'description': 'Build the project and container.',
+        'const': True,
         'default': False,
-        'is_flag': True,
         'action': 'store',
+        'type': bool,
     },
     'push': {
         'description': 'Push the docker to the repository.',
+        'const': True,
         'default': False,
-        'is_flag': True,
         'action': 'store',
+        'type': bool,
     },
     'deploy': {
         'description': 'Deploy kubernetes yamls.',
+        'const': True,
         'default': False,
-        'is_flag': True,
         'action': 'store',
+        'type': bool,
     },
     'init_db': {
         'description': 'After deployment, also initialize the database and schema.',
+        'const': True,
         'default': False,
-        'is_flag': True,
         'action': 'store',
+        'type': bool,
     },
     'dev': {
         'description': 'Build a development environment.',
+        'const': True,
         'default': False,
-        'is_flag': True,
         'action': 'store',
+        'type': bool,
     },
     'minikube_ip': {
         'description': 'Print minikube ip.',
+        'const': True,
         'default': True,
         'hidden': True,
-        'is_flag': True,
         'action': 'store',
+        'type': bool,
     }
 }
 
@@ -99,23 +109,19 @@ class CommandsController:
             help='Project app directory',
         )
 
+        # Commands arguments
         for command, command_data in commands.items():
-            const = None
-            if 'is_flag' in command_data:
-                const = command_data['is_flag']
-            elif 'const' in command_data:
-                const = command_data['const']
-
             parser.add_argument(
                 '--{}'.format(command),
                 nargs='?',
                 action=command_data['action'],
-                help=command_data['description'],
+                # Uses this vlaue if arg appears, but no explicit value is given 
+                const=command_data['const'] if 'const' in command_data else None,
                 # Uses this value if arg doesn't appear
                 default=command_data['default'] if 'default' in command_data else None, 
                 required=True if 'default' not in command_data else None,
-                # Uses this vlaue if arg appears, but no explicit value is given 
-                const=const  
+                type=command_data['type'],
+                help=argparse.SUPPRESS if 'hidden' in command_data and command_data['hidden'] else command_data['description'],
             )
 
         CommandsController.parsed_arguments = parser.parse_args().__dict__
