@@ -1,90 +1,139 @@
 import importlib
-import sys
 import tools
 from tools.debug import Debug
+import argparse
 
 
 # Commands will be run in the same order of the dictionary
 commands = {
     'dev': {
         'description': 'Run as a development environment.',
+        'is_flag': True,
+        'action': 'store',
     },
-    'print-environment': {
+    'print_environment': {
         'description': 'Print the deployment environment.',
         'default': True,
         'hidden': True,
-    },
-    'help': {
-        'description': 'Print all the arguments.',
-        'stopper': True,
+        'is_flag': True,
+        'action': 'store',
     },
     'context': {
         'description': 'Switch Kubernetes context',
-        'default': True,
-        'hidden': True,
+        'default': 'minikube',
+        'action': 'store',
     },
     'delete': {
-        'description': 'Delete the kubernetes namespace.'
+        'description': 'Delete the kubernetes namespace.',
+        'default': False,
+        'is_flag': True,
+        'action': 'store',
     },
-    'start-minikube': {
-        'description': 'Start minikube as part of the deployment.'
+    'start_minikube': {
+        'description': 'Start minikube as part of the deployment.',
+        'default': False,
+        'is_flag': True,
+        'action': 'store',
     },
     'build': {
-        'description': 'Build the project and container.'
+        'description': 'Build the project and container.',
+        'default': False,
+        'is_flag': True,
+        'action': 'store',
     },
     'push': {
-        'description': 'Push the docker to the repository.'
+        'description': 'Push the docker to the repository.',
+        'default': False,
+        'is_flag': True,
+        'action': 'store',
     },
     'deploy': {
-        'description': 'Deploy kubernetes yamls.'
+        'description': 'Deploy kubernetes yamls.',
+        'default': False,
+        'is_flag': True,
+        'action': 'store',
     },
-    'init-db': {
-        'description': 'After deployment, also initialize the database and schema.'
+    'init_db': {
+        'description': 'After deployment, also initialize the database and schema.',
+        'default': False,
+        'is_flag': True,
+        'action': 'store',
     },
     'dev': {
-        'description': 'Build a development environment.'
+        'description': 'Build a development environment.',
+        'default': False,
+        'is_flag': True,
+        'action': 'store',
     },
-    'minikube-ip': {
+    'minikube_ip': {
         'description': 'Print minikube ip.',
         'default': True,
         'hidden': True,
+        'is_flag': True,
+        'action': 'store',
     }
 }
 
+
 class CommandsController:
+    parsed_arguments = None
+
     def __init__(self, project):
         self.project = project
 
-    def run_command(self, command):
+    @staticmethod
+    def parse_arguments():
+        if CommandsController.parsed_arguments is not None:
+            return CommandsController.parsed_arguments
+
+        parser = argparse.ArgumentParser(
+            description='Kuberfest framework',
+            add_help=True,
+        )
+
+        # Project dir argument
+        parser.add_argument(
+            'project-dir', 
+            nargs=1,
+            action='store',
+            help='Project app directory',
+        )
+
+        for command, command_data in commands.items():
+            const = None
+            if 'is_flag' in command_data:
+                const = command_data['is_flag']
+            elif 'const' in command_data:
+                const = command_data['const']
+
+            parser.add_argument(
+                '--{}'.format(command),
+                nargs='?',
+                action=command_data['action'],
+                help=command_data['description'],
+                # Uses this value if arg doesn't appear
+                default=command_data['default'] if 'default' in command_data else None, 
+                required=True if 'default' not in command_data else None,
+                # Uses this vlaue if arg appears, but no explicit value is given 
+                const=const  
+            )
+
+        CommandsController.parsed_arguments = parser.parse_args().__dict__
+        return CommandsController.parsed_arguments
+
+    def _run_command(self, command, values):
         if command in commands:
             i = importlib.import_module('commands.' + command)
-            result = i.run(self.project)
+            result = i.run(self.project, values)
             if not result:
                 return False
 
         return True
 
-    def check_commands(self):
-        bad_commands = list()
-        for arg in sys.argv[2:]:
-            if arg[2:] not in commands:
-                bad_commands.append(arg)
-
-        if len(bad_commands) == 1:
-            print('Command [{}] is unsupported'.format(', '.join(bad_commands)))
-            return False
-        elif len(bad_commands) > 1:
-            print('Commands [{}] are unsupported'.format(', '.join(bad_commands)))
-            return False
-
-        return True
-
     def run_commands(self):
-        for command in commands.keys():
-            if 'default' in commands[command] and commands[command]['default'] or '--{}'.format(command) in sys.argv:
-                if not self.run_command(command):
-                    Debug.error('Stopped with partial results.')
-                    return
+        parsed_arguments = self.parse_arguments()
 
-            if 'stopper' in commands[command] and commands[command]['stopper'] and '--{}'.format(command) in sys.argv:
-                break
+        for command in commands.keys():
+            if not self._run_command(command, parsed_arguments[command]):
+                Debug.error('Stopped with partial results.')
+                return

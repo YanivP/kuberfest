@@ -1,6 +1,6 @@
 import tools
 
-def run(project):
-    tools.set_development(True)
+def run(project, value):
+    project.set_development(value)
 
     return True

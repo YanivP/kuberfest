@@ -5,7 +5,10 @@ import commands
 from tools.debug import Debug
 
 
-def run(project):
+def run(project, value):
+    if not value:
+        return True
+
     ip=os.popen('minikube ip').read().strip()
     if ip != '':
         Debug.info(

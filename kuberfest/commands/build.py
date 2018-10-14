@@ -3,7 +3,10 @@ import os
 from tools.debug import Debug
 
 
-def run(project):
+def run(project, value):
+    if not value:
+        return True
+
     Debug.info("Building container...")
     repository = project.get_variable('REPOSITORY')
     cwd = os.getcwd()

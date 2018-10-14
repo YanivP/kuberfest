@@ -4,7 +4,10 @@ import settings
 from tools.debug import Debug
 
 
-def run(project):
+def run(project, value):
+    if not value:
+        return True
+
     Debug.info("Pushing docker file...")
     cwd = os.getcwd()
     os.chdir(project.dir)

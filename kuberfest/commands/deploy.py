@@ -6,7 +6,10 @@ from tools.yaml import YamlTool
 from tools.debug import Debug
 
 
-def run(project):
+def run(project, value):
+    if not value:
+        return True
+
     Debug.info("Setting up kubernetes yamls...")
 
     yaml_tool = YamlTool(project)
@@ -15,7 +18,7 @@ def run(project):
     project.delete_tmp_dir()
     yamls = list()
     for yaml_file_name in settings.template_file_names:
-        yamls.append(yaml_tool.get_yaml(yaml_file_name, **project.variables)
+        yamls.append(yaml_tool.get_yaml(yaml_file_name, **project.variables))
     yaml_tool.merge_yamls(yamls, settings.output_yaml_file_name)
     kubernetes_tool.run_yaml(settings.output_yaml_file_name)
 
@@ -29,3 +32,5 @@ def run(project):
         namespace=project.get_variable('NAMESPACE'),
         deployments=deployments,
     )
+
+    return True

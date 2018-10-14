@@ -3,7 +3,10 @@ from tools.kubernetes import KubernetesTool
 from tools.debug import Debug
 
 
-def run(project):
+def run(project, value):
+    if not value:
+        return True
+
     kubernetes_tool = KubernetesTool(project)
 
     key_input = input(
