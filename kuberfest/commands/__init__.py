@@ -88,15 +88,6 @@ commands = {
         'type': bool,
         'nargs': '?',
     },
-    'development': {
-        'short': 'dev',
-        'description': 'build a development environment.',
-        'const': True,
-        'default': False,
-        'action': 'store',
-        'type': bool,
-        'nargs': '?',
-    },
     'minikube_ip': {
         'short': 'mkbip',
         'description': 'print minikube ip.',
@@ -137,9 +128,9 @@ class CommandsController:
 
         # Commands arguments
         for command, command_data in commands.items():
-            parser.add_argument(
-                '-{}'.format(command_data['short']),
+            parser.add_argument(                
                 '--{}'.format(command),
+                '--{}'.format(command_data['short']),
                 metavar=str(command_data['type'])[8:-2],
                 nargs=command_data['nargs'],
                 action=command_data['action'],
