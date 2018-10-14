@@ -2,6 +2,7 @@ import importlib
 import tools
 from tools.debug import Debug
 import argparse
+import consts
 
 
 # Commands will be run in the same order of the dictionary
@@ -121,7 +122,8 @@ class CommandsController:
             return CommandsController.parsed_arguments
 
         parser = argparse.ArgumentParser(
-            description='Kuberfest framework',
+            prog=consts.kuberfest_name,
+            description=consts.kuberfest_description,
             add_help=True,
         )
 
