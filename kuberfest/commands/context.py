@@ -1,11 +1,14 @@
 import tools
+from tools.kubernetes import KubernetesTool
+from tools.debug import Debug
 import os
 
-def run():
-    tools.debug('Switching Kubernetes context...')
-    context = tools.get_variable('CONTEXT')
+
+def run(project, value):
+    Debug.info('Switching Kubernetes context...')
+    context = project.get_variable('CONTEXT')
 
     # TODO: Allow switching manually
-    tools.switch_config('minikube')
+    KubernetesTool(project).switch_config(value)
 
     return True

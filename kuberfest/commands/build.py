@@ -1,11 +1,16 @@
 import tools
 import os
+from tools.debug import Debug
 
-def run():
-    tools.debug("Building container...")
-    repository = tools.get_variable('REPOSITORY')
+
+def run(project, value):
+    if not value:
+        return True
+
+    Debug.info("Building container...")
+    repository = project.get_variable('REPOSITORY')
     cwd = os.getcwd()
-    os.chdir(tools.get_project_dir())
+    os.chdir(project.dir)
     os.system(
         'docker-compose build --build-arg "-t {} ."'.format(repository)
     )
