@@ -1,3 +1,6 @@
 *.pyc
 output.yaml
 .vscode/settings.json
+build
+dist
+kuberfest.egg-info

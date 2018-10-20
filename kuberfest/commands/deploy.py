@@ -1,9 +1,8 @@
-import tools
-from tools.kubernetes import KubernetesTool
+from kuberfest.tools.kubernetes import KubernetesTool
 import os
 import settings
-from tools.yaml import YamlTool
-from tools.debug import Debug
+from kuberfest.tools.yaml import YamlTool
+from kuberfest.tools.debug import Debug
 
 
 def run(project, value):

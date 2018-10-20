@@ -1,5 +1,5 @@
-from consts import kuberfest_dir
-from tools.debug import Debug
+from kuberfest.consts import kuberfest_dir
+from kuberfest.tools.debug import Debug
 import sys
 import os
 

@@ -1,8 +1,7 @@
-import tools
 import os
 import settings
-import commands
-from tools.debug import Debug
+import kuberfest2.commands
+from kuberfest.tools.debug import Debug
 
 
 def run(project, value):
