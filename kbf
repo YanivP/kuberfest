@@ -1,6 +1,4 @@
 #!/usr/bin/env python
 
-# This file provides a shorter executable instead of calling "python kuberfest/kuberfest.py" each time
-
 from kuberfest.run import run
 run()
