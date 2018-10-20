@@ -40,7 +40,7 @@ This is the framework folder, contains all base framework logic.
 ### In your own project (in our example: ./dotnet_demo_project/)
 `./dotnet_demo_project/kuberfest/`
 
-This folder needs to be put into your project (in our example: dotnet_demo_project).
+Your project must contain a `kuberfest` folder with the files and folders mentioned below.
 
 `./dotnet_demo_project/kuberfest/templates`
 
