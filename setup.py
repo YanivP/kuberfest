@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='kuberfest',  
-    version='0.0.1',
+    version='0.0.1a1',
     scripts=['kbf'] ,
     author="Yaniv Peer",
     author_email="yanivpeer@gmail.com",
