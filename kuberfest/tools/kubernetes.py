@@ -1,6 +1,6 @@
-from tools.base import BaseTool
+from kuberfest.tools.base import BaseTool
 import os
-from tools.debug import Debug
+from kuberfest.tools.debug import Debug
 
 
 class KubernetesTool(BaseTool):

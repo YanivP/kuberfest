@@ -1,7 +1,7 @@
-from tools.debug import Debug
-from commands import CommandsController
+from kuberfest.tools.debug import Debug
+from kuberfest.commands import CommandsController
 import sys
-from project import Project
+from kuberfest.project import Project
 
 
 parsed_arguments = CommandsController.parse_arguments()

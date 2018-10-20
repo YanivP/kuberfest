@@ -1,4 +1,4 @@
-from tools.base import BaseTool
+from kuberfest.tools.base import BaseTool
 import os
 import yaml as yaml_module
 

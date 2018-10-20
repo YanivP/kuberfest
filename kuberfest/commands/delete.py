@@ -1,6 +1,5 @@
-import tools
-from tools.kubernetes import KubernetesTool
-from tools.debug import Debug
+from kuberfest.tools.kubernetes import KubernetesTool
+from kuberfest.tools.debug import Debug
 
 
 def run(project, value):

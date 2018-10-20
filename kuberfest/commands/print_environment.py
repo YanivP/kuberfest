@@ -1,5 +1,4 @@
-import tools
-from tools.debug import Debug
+from kuberfest.tools.debug import Debug
 
 def run(project, value):
     if not value:

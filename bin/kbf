@@ -1,5 +1,0 @@
-#!/usr/bin/python
-
-# This file provides a shorter executable instead of calling "python kuberfect.py" each time
-
-import kuberfest.py
