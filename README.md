@@ -37,7 +37,7 @@ An executable Python 3.6 script for running Kuberfest.
 
 This is the framework folder, contains all base framework logic.
 
-### On your own project (demo project for example)
+### In your own project (in our example: ./dotnet_demo_project/)
 `./dotnet_demo_project/kuberfest/`
 
 This folder needs to be put into your project (in our example: dotnet_demo_project).
