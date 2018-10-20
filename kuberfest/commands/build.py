@@ -10,9 +10,7 @@ def run(project, value):
     repository = project.get_variable('REPOSITORY')
     cwd = os.getcwd()
     os.chdir(project.dir)
-    os.system(
-        'docker-compose build'.format(repository)
-    )
+    os.system('docker-compose build'.format(repository))
     os.chdir(cwd)
 
     return True
