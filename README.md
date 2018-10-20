@@ -1,6 +1,9 @@
 # Kuberfest Framework (WIP)
 A lightweight framework for fast cloud development.
 
+## Current version
+0.0.1a (Unpolished POC version, possibly buggy)
+
 ## Intro
 
 Kuberfest lets you easily run a local Kubernetes environment, test your deployment in Minikube, and export it as a YAML for a production Kubernetes cluster deployment.
@@ -11,9 +14,6 @@ The framework attempts to solve the following real world problems through automa
 1. Maintaining a complex "setup" readme file is tedious and often results in outdated information.
 1. New team members are required to waste many hours on manually installing software and configuring their environments.
 1. Copy-pasting settings such as environment variables is annoying and often results in mistakes.
-
-## Current version
-0.0.1a (POC version, possibly buggy)
 
 ## Dependencies
 * pip
