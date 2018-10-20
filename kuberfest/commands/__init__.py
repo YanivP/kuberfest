@@ -18,7 +18,7 @@ commands = {
         'nargs': '?',
     },
     'print_environment': {
-        'short': 'pc',
+        'short': 'env',
         'description': 'print the deployment environment.',
         'const': True,
         'default': True,
@@ -28,7 +28,7 @@ commands = {
         'nargs': '?',
     },
     'context': {
-        'short': 'c',
+        'short': 'ctx',
         'description': 'switch Kubernetes context',
         'default': 'minikube',
         'action': 'store',
@@ -45,7 +45,7 @@ commands = {
         'nargs': '?',
     },
     'start_minikube': {
-        'short': 'smkb',
+        'short': 'smk',
         'description': 'start minikube as part of the deployment.',
         'const': True,
         'default': False,
@@ -54,7 +54,7 @@ commands = {
         'nargs': '?',
     },
     'build': {
-        'short': 'b',
+        'short': 'bld',
         'description': 'build the project and container.',
         'const': True,
         'default': False,
@@ -63,7 +63,7 @@ commands = {
         'nargs': '?',
     },
     'push': {
-        'short': 'p',
+        'short': 'psh',
         'description': 'push the docker to the repository.',
         'const': True,
         'default': False,
@@ -72,7 +72,7 @@ commands = {
         'nargs': '?',
     },
     'deploy': {
-        'short': 'd',
+        'short': 'dep',
         'description': 'deploy kubernetes yamls.',
         'const': True,
         'default': False,
@@ -81,7 +81,7 @@ commands = {
         'nargs': '?',
     },
     'minikube_ip': {
-        'short': 'mkbip',
+        'short': 'mkip',
         'description': 'print minikube ip.',
         'const': True,
         'default': True,
