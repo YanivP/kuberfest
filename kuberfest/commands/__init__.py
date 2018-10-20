@@ -2,6 +2,8 @@ import importlib
 import argparse
 from kuberfest import consts
 from kuberfest.tools.debug import Debug
+from kuberfest.consts import kuberfest_dir
+import sys
 
 
 # Commands will be run in the same order of the dictionary
@@ -16,7 +18,7 @@ commands = {
         'nargs': '?',
     },
     'print_environment': {
-        'short': 'pc',
+        'short': 'env',
         'description': 'print the deployment environment.',
         'const': True,
         'default': True,
@@ -26,7 +28,7 @@ commands = {
         'nargs': '?',
     },
     'context': {
-        'short': 'c',
+        'short': 'ctx',
         'description': 'switch Kubernetes context',
         'default': 'minikube',
         'action': 'store',
@@ -43,7 +45,7 @@ commands = {
         'nargs': '?',
     },
     'start_minikube': {
-        'short': 'smkb',
+        'short': 'smk',
         'description': 'start minikube as part of the deployment.',
         'const': True,
         'default': False,
@@ -52,7 +54,7 @@ commands = {
         'nargs': '?',
     },
     'build': {
-        'short': 'b',
+        'short': 'bld',
         'description': 'build the project and container.',
         'const': True,
         'default': False,
@@ -61,7 +63,7 @@ commands = {
         'nargs': '?',
     },
     'push': {
-        'short': 'p',
+        'short': 'psh',
         'description': 'push the docker to the repository.',
         'const': True,
         'default': False,
@@ -70,7 +72,7 @@ commands = {
         'nargs': '?',
     },
     'deploy': {
-        'short': 'd',
+        'short': 'dep',
         'description': 'deploy kubernetes yamls.',
         'const': True,
         'default': False,
@@ -78,17 +80,8 @@ commands = {
         'type': bool,
         'nargs': '?',
     },
-    'init_db': {
-        'short': 'idb',
-        'description': 'after deployment, also initialize the database and schema.',
-        'const': True,
-        'default': False,
-        'action': 'store',
-        'type': bool,
-        'nargs': '?',
-    },
     'minikube_ip': {
-        'short': 'mkbip',
+        'short': 'mkip',
         'description': 'print minikube ip.',
         'const': True,
         'default': True,
@@ -102,12 +95,45 @@ commands = {
 
 class CommandsController:
     parsed_arguments = None
+    project_dir_argument = 'project_dir'
 
     def __init__(self, project):
         self.project = project
 
+    def get_all_commands(self):
+        project_commands = self.get_project_commands()
+        return {**commands, **project_commands.commands}
+
+    def get_project_commands(self):
+        try:
+            project_dir = "{0}/{1}".format(self.project.dir, kuberfest_dir)
+            Debug.info("Importing project commands at '{}'...".format(project_dir))
+            sys.path.append(project_dir)
+            import commands as project_commands
+            return project_commands
+
+        except ModuleNotFoundError:
+            Debug.info("Project dir not found at '{}'".format(project_dir))
+
     @staticmethod
-    def parse_arguments():
+    def get_project_dir_from_arguments():
+        parser = argparse.ArgumentParser(
+            prog=consts.kuberfest_name,
+            description=consts.kuberfest_description,
+            add_help=False,
+        )
+
+        # Project dir argument
+        parser.add_argument(
+            CommandsController.project_dir_argument,
+            nargs=1,
+            action='store',
+            help='Project app directory',
+        )
+
+        return parser.parse_known_args()[0].__dict__[CommandsController.project_dir_argument][0]
+
+    def parse_arguments(self):
         if CommandsController.parsed_arguments is not None:
             return CommandsController.parsed_arguments
 
@@ -119,14 +145,14 @@ class CommandsController:
 
         # Project dir argument
         parser.add_argument(
-            'project_dir', 
+            CommandsController.project_dir_argument,
             nargs=1,
             action='store',
             help='Project app directory',
         )
 
         # Commands arguments
-        for command, command_data in commands.items():
+        for command, command_data in self.get_all_commands().items():
             parser.add_argument(                
                 '--{}'.format(command),
                 '--{}'.format(command_data['short']),
@@ -145,8 +171,8 @@ class CommandsController:
         CommandsController.parsed_arguments = parser.parse_args().__dict__
         return CommandsController.parsed_arguments
 
-    def _run_command(self, command, values):
-        i = importlib.import_module('kuberfest.commands.' + command)
+    def _run_command(self, command, values, module_base):
+        i = importlib.import_module('{}.{}'.format(module_base, command))
         result = i.run(self.project, values)
         if not result:
             return False
@@ -156,7 +182,20 @@ class CommandsController:
     def run_commands(self):
         parsed_arguments = self.parse_arguments()
 
+        print(parsed_arguments)
+
+        Debug.info("Running Kuberfest commands...")
         for command in commands.keys():
-            if not self._run_command(command, parsed_arguments[command]):
+            if not self._run_command(command, parsed_arguments[command], 'kuberfest.commands'):
+                Debug.error('Stopped with partial results.')
+                return
+
+        # project_dir = "{0}/{1}".format(self.project.dir, kuberfest_dir)
+        # Debug.info("Importing project commands at '{}'...".format(project_dir))
+        # sys.path.append(project_dir)
+
+        Debug.info("Running project commands...")
+        for command in self.get_project_commands().commands.keys():
+            if not self._run_command(command, parsed_arguments[command], 'commands'):
                 Debug.error('Stopped with partial results.')
                 return

@@ -4,10 +4,8 @@ import sys
 from kuberfest.project import Project
 
 def run():
-    parsed_arguments = CommandsController.parse_arguments()
-
     # Build a project object for the rest of the runtime
-    project = Project(parsed_arguments['project_dir'][0])
+    project = Project(CommandsController.get_project_dir_from_arguments())
 
     # Run commands for project
     command_controller = CommandsController(project)
