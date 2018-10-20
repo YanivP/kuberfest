@@ -24,7 +24,7 @@ The framework attempts to solve the following real world problems through automa
 Tested on 'MacOSX 10.13.6'
 
 ## Installation
-TODO: pip package installation instructions
+Kuberfest is available through pip: `pip install kuberfest`
 
 ## Project structure
 
