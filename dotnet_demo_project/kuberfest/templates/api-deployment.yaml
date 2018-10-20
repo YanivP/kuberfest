@@ -15,7 +15,7 @@ spec:
         app: {API_APP_NAME}
     spec:
       containers:
-        - image: "yanivpeer/kuberfest-demo-project"
+        - image: "kuberfest/dotnet-demo-project"
           name: {API_CONTAINER_NAME}
           env:
             - name: ASPNETCORE_ENVIRONMENT

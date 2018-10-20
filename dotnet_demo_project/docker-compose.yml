@@ -1,6 +1,7 @@
 version: "3"
 services:
   web:
+    image: "kuberfest/dotnet-demo-project"
     build: .
     ports:
       - 8000:80

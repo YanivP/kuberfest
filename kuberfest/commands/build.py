@@ -11,7 +11,7 @@ def run(project, value):
     cwd = os.getcwd()
     os.chdir(project.dir)
     os.system(
-        'docker-compose build --build-arg "-t {} ."'.format(repository)
+        'docker-compose build'.format(repository)
     )
     os.chdir(cwd)
 

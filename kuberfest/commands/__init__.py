@@ -146,7 +146,7 @@ class CommandsController:
         return CommandsController.parsed_arguments
 
     def _run_command(self, command, values):
-        i = importlib.import_module('commands.' + command)
+        i = importlib.import_module('kuberfest.commands.' + command)
         result = i.run(self.project, values)
         if not result:
             return False
