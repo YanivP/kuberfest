@@ -1,7 +1,7 @@
+from tools.debug import Debug
 from commands import CommandsController
 import sys
 from project import Project
-from tools.debug import Debug
 
 
 parsed_arguments = CommandsController.parse_arguments()

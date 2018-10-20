@@ -1,1 +1,5 @@
 pyyaml>=0
+setuptools>=0
+wheel>=0
+twine>=0
+tqdm>=0

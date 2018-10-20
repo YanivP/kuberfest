@@ -1,0 +1,7 @@
+README.md
+setup.py
+bin/kbf
+kuberfest.egg-info/PKG-INFO
+kuberfest.egg-info/SOURCES.txt
+kuberfest.egg-info/dependency_links.txt
+kuberfest.egg-info/top_level.txt

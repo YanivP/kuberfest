@@ -1,8 +1,7 @@
 import importlib
-import tools
-from tools.debug import Debug
 import argparse
 import consts
+from tools.debug import Debug
 
 
 # Commands will be run in the same order of the dictionary

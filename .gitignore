@@ -1,3 +1,5 @@
 *.pyc
 output.yaml
 .vscode/settings.json
+build
+dist
