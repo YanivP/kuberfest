@@ -12,8 +12,6 @@ The framework attempts to solve the following real world problems through automa
 1. New team members are required to waste many hours on manually installing software and configuring their environments.
 1. Copy-pasting settings such as environment variables is annoying and often results in mistakes.
 
-Kuberfest is programming language and framework agnostic. Kuberfest itself is built in Python 3.6.
-
 ## Current version
 0.0.1a (do not use this for anything yet)
 
@@ -99,7 +97,7 @@ This framework is developed as a way to thoroughly study Kubernetes and on-the-w
 Please refer to TODO.md for a simple project roadmap.
  
 ### Does my project need to be written in Python?
-Nope, use any programming language or framework.
+Kuberfest is programming language and framework agnostic. Kuberfest itself is built in Python 3.6.
 
 ### Why is the demo project written in DotNet Core?
 This is simply a first of multiple POCs that will come later once the framework is more mature. I like C# and wanted to understand the Entity Framework on the way.
