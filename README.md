@@ -1,4 +1,4 @@
-
+![image](https://user-images.githubusercontent.com/2112284/47258323-5fb09a80-d4a2-11e8-8fee-e10b4ab516f1.png)
 
 # Kuberfest Framework (WIP)
 A lightweight framework for fast cloud development.
@@ -107,3 +107,6 @@ Kuberfest is programming language and framework agnostic. Kuberfest itself is bu
 
 ### Why is the demo project written in DotNet Core?
 This is simply a first of multiple POCs that will come later once the framework is more mature. I like C# and wanted to understand the Entity Framework on the way.
+
+### Credits and licenses
+The beer logo is licensed creative commons as mentioned in [the source page](https://www.svgrepo.com/svg/14897/beer)
