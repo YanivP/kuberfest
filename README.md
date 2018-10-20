@@ -31,6 +31,10 @@ TODO: pip package installation instructions
 ## Project structure
 
 ### Framework
+`./kbf`
+
+An executable Python 3.6 script for running Kuberfest.
+
 `./kuberfest/`
 
 This is the framework folder, contains all base framework logic.
