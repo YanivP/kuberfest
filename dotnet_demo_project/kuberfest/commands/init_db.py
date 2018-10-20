@@ -12,8 +12,11 @@ def run(project, value):
     
     db_pod = kubernetes_tool.get_pods(
         namespace=project.get_variable('NAMESPACE'), 
-        app_name=project.get_variable('DB_APP_NAME')[0]
-    )
+        app_name=project.get_variable('DB_APP_NAME')
+    )[0]
+
+    print("BBBBB " + str(db_pod))
+
     init_db(
         project=project,
         namespace=project.get_variable('NAMESPACE'),
