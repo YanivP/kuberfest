@@ -5,7 +5,11 @@ from kuberfest.project import Project
 
 def run():
     # Build a project object for the rest of the runtime
-    project = Project(CommandsController.get_project_dir_from_arguments())
+    project_dir = CommandsController.get_project_dir_from_arguments()
+    if project_dir is not None:
+        project = Project(project_dir)
+    else:
+        project = None
 
     # Run commands for project
     command_controller = CommandsController(project)

@@ -102,9 +102,15 @@ class CommandsController:
 
     def get_all_commands(self):
         project_commands = self.get_project_commands()
+        if project_commands is None:
+            return commands
+
         return {**commands, **project_commands.commands}
 
     def get_project_commands(self):
+        if self.project is None:
+            return None
+
         try:
             project_dir = "{0}/{1}".format(self.project.dir, kuberfest_dir)
             Debug.info("Importing project commands at '{}'...".format(project_dir))
@@ -126,12 +132,17 @@ class CommandsController:
         # Project dir argument
         parser.add_argument(
             CommandsController.project_dir_argument,
-            nargs=1,
+            nargs='?',
             action='store',
             help='Project app directory',
         )
 
-        return parser.parse_known_args()[0].__dict__[CommandsController.project_dir_argument][0]
+        project_dirs = parser.parse_known_args()[0].__dict__[CommandsController.project_dir_argument]
+
+        if project_dirs is None:
+            return None
+
+        return project_dirs
 
     def parse_arguments(self):
         if CommandsController.parsed_arguments is not None:
@@ -182,17 +193,14 @@ class CommandsController:
     def run_commands(self):
         parsed_arguments = self.parse_arguments()
 
-        print(parsed_arguments)
+        if self.project is None:
+            return
 
         Debug.info("Running Kuberfest commands...")
         for command in commands.keys():
             if not self._run_command(command, parsed_arguments[command], 'kuberfest.commands'):
                 Debug.error('Stopped with partial results.')
                 return
-
-        # project_dir = "{0}/{1}".format(self.project.dir, kuberfest_dir)
-        # Debug.info("Importing project commands at '{}'...".format(project_dir))
-        # sys.path.append(project_dir)
 
         Debug.info("Running project commands...")
         for command in self.get_project_commands().commands.keys():
