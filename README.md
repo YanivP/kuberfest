@@ -7,10 +7,10 @@ Kuberfest lets you easily run a local Kubernetes environment, test your deployme
 
 The framework attempts to solve the following real world problems through automation:
 1. Differences between dev and production environments are a source for bugs.
-2. Syncing the dev environment between team members is challenging and often results in breaks.
-3. Maintaining a complex "setup" readme file is tedious and often results in outdated information.
-4. New team members are required to waste many hours on manually installing software and configuring their environments.
-5. Copy-pasting settings such as environment variables is annoying and often results in mistakes.
+1. Syncing the dev environment between team members is challenging and often results in breaks.
+1. Maintaining a complex "setup" readme file is tedious and often results in outdated information.
+1. New team members are required to waste many hours on manually installing software and configuring their environments.
+1. Copy-pasting settings such as environment variables is annoying and often results in mistakes.
 
 Kuberfest is programming language and framework agnostic. Kuberfest itself is built in Python 3.6.
 
@@ -66,15 +66,16 @@ Can contain variables to be re-used in the Kubernetes yamls
 Contains important definitions about your project.
 
 ## How to get the demo project running
+1. Install base dependencies mentioned above.
 1. As with most Python projects, it's best to use a container such as `virtualenv` to avoid conflicts with other projects.
-2. Install base dependencies mentioned above. 
-3. Open a terminal and navigate to the project root folder.
-4. Install project requirements: `pip install -r requirements.txt`
-5. Run `./kbf --help` to see that you're able to display the help.
-6. Run `./kbf dotnet_demo_project --start_minikube --deploy --development --init_db` which will make sure minikube is started, generate and deploy the yamls, and init the db.
-7. You should see the message: `You can access the app through: http://x.x.x.x:x/api/values`. Copy that URL to your browser and see if you're getting a response from the API.
+1. Create a folder and copy the content of the `dotnet_demo_project` into it.
+1. Open a terminal and navigate into it.
+1. `pip install kuberfest`
+1. Run `kbf --help` to see that you're able to display the help.
+1. Run `kbf dotnet_demo_project --start_minikube --deploy --development --init_db` which will make sure minikube is started, generate and deploy the yamls, and init the db.
+1. You should see the message: `You can access the app through: http://x.x.x.x:x/api/values`. Copy that URL to your browser and see if you're getting a response from the API.
 
-If you got all the way here, congrats!
+If you got all the way here, congrats! If not, drop me a note.
 
 ## Motivation
 This framework is developed as a way to thoroughly study Kubernetes and on-the-way automate some of the processes in professional projects I'm working on. If you have any comments on the way I'm doing things don't hesitate to shoot me an email :)
@@ -82,9 +83,9 @@ This framework is developed as a way to thoroughly study Kubernetes and on-the-w
 ## QA
 ### What do I need to know before using Kuberfest?
 1. Learn [how to dockerize your application](https://docs.docker.com/engine/reference/builder/).
-2. Learn [how to configure a kubernetes cluster](https://kubernetes.io/docs/concepts/configuration/).
-3. Install the base dependencies mentioned above.
-4. Optionally, run a Kubernetes cluster, [such as Amazon EKS](https://aws.amazon.com/getting-started/projects/deploy-kubernetes-app-amazon-eks/). Please note that it's very expensive.
+1. Learn [how to configure a kubernetes cluster](https://kubernetes.io/docs/concepts/configuration/).
+1. Install the base dependencies mentioned above.
+1. Optionally, run a Kubernetes cluster, [such as Amazon EKS](https://aws.amazon.com/getting-started/projects/deploy-kubernetes-app-amazon-eks/). Please note that it's very expensive.
  
 ### What's planned for the future?
 Please refer to TODO.md for a simple project roadmap.
