@@ -111,4 +111,4 @@ This is simply a first of multiple POCs that will come later once the framework 
 ## Credits and licenses
 Kubernetes is free to use under the MIT license. Just be nice, give proper credits and keep it legal.
 
-The beer logo is licensed creative commons as mentioned in [the source page](https://www.svgrepo.com/svg/14897/beer). It was manipulated to add the "K" letter on top of the beer bug and the "Kuberfest" name besides it.
+The beer logo is licensed creative commons as mentioned in [the source page](https://www.svgrepo.com/svg/14897/beer). It was manipulated to add the "K" letter on top of the beer mug and the "Kuberfest" name besides it.
