@@ -11,4 +11,4 @@
 
 ### Wishful features ###
 * Set up a simple CI/CD to a real AWS Kubernetes cluster in order to prove the concept.
-  * Requires funding, Kubernetes is very expensive.
+  * Requires funding, EKS is very expensive.
