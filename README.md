@@ -78,7 +78,7 @@ Contains important definitions about your project.
 If you got all the way here, congrats! If not, drop me a note.
 
 ## Where to go from here?
-The dmeo project you ran in the step before uses a Docker container which was pre-built for the purpose of the demo. If you want to build your own Docker container, you'll have to edit the relevant files and direct the project to your own Dockerhub account.
+The demo project you ran in the step before uses a Docker container which was pre-built for the purpose of the demo. If you want to build your own Docker container, you'll have to edit the relevant files and direct the project to your own Dockerhub account.
 
 1. Edit the `image` value in `docker-compose.yaml` to your own repository.
 1. Edit the `REPOSITORY` value in the demo project's `./kuberfest/variables.py` to the same repository.
