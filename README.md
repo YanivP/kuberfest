@@ -67,8 +67,8 @@ Contains important definitions about your project.
 1. Install base dependencies mentioned above.
 1. As with most Python projects, it's best to use a container such as `virtualenv` to avoid conflicts with other projects.
 1. Create a folder and copy the content of the `dotnet_demo_project` into it.
-1. Open a terminal and navigate into it.
-1. Run `pip install kuberfest`
+1. Open a terminal and navigate into the new project folder.
+1. Run `pip install kuberfest`. That should install the `kbf` executable into your virtualenv.
 1. Run `kbf --help` to see that you're able to display the help.
 1. Run `kbf . --start_minikube --deploy --development --init_db` which will make sure minikube is started, generate and deploy the yamls, and init the db.
 1. You should see the message: `You can access the app through: http://x.x.x.x:x/api/values`. Copy that URL to your browser and see if you're getting a response from the API.
