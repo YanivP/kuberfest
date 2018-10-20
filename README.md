@@ -30,25 +30,43 @@ TODO: pip installation instructions
 
 ## Project structure
 
-### ./kuberfest/
+`./kuberfest/`
+
 This is the framework folder, contains all base framework logic.
 
-### ./dotnet_demo_project/kuberfest/
+`./dotnet_demo_project/kuberfest/`
+
 This folder needs to be put into your project (in our example: dotnet_demo_project).
-#### ./dotnet_demo_project/kuberfest/templates
+
+`./dotnet_demo_project/kuberfest/templates`
+
 Contains Kubernetes deployments yamls.
-#### ./dotnet_demo_project/kuberfest/commands
+
+`./dotnet_demo_project/kuberfest/commands`
+
 Can extend the framework's base commands into project-specific commands and automation.
-#### ./dotnet_demo_project/kuberfest/output
+For example, the `--init_db` command isn't part of Kuberfest, but actually an extention written specifically for the demo project.
+
+`./dotnet_demo_project/kuberfest/output`
+
 Will contain the final yaml which is then deployed in Kubernetes.
-#### ./dotnet_demo_project/kuberfest/variables.py
+
+`./dotnet_demo_project/kuberfest/variables.py`
+
 Can contain variables to be re-used in the Kubernetes yamls
-#### ./dotnet_demo_project/kuberfest/settings.py
+
+`./dotnet_demo_project/kuberfest/settings.py`
+
 Contains important definitions about your project.
 
 ## How to use Kuberfest framework
-### Through terminal:
-kbf --help
+### Through the project:
+`./kbf --help` will get you all possible commands.
+
+For starters, you can try `kbf dotnet_demo_project --start_minikube --deploy --development --init_db` which will make sure minikube is started, generate and deploy the yamls, and init the db.
+
+### Through pip installation ###
+WIP
 
 ## Motivation
 This framework is developed as a way to thoroughly study Kubernetes and on-the-way automate some of the processes in professional projects I'm working on. If you have any comments on the way I'm doing things don't hesitate to shoot me an email :)
