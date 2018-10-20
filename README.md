@@ -13,7 +13,7 @@ The framework attempts to solve the following real world problems through automa
 1. Copy-pasting settings such as environment variables is annoying and often results in mistakes.
 
 ## Current version
-0.0.1a (do not use this for anything yet)
+0.0.1a (POC version, possibly buggy)
 
 ## Dependencies
 * pip
