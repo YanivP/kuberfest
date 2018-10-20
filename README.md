@@ -94,7 +94,7 @@ This framework is developed as a way to thoroughly study Kubernetes and on-the-w
 1. Optionally, run a Kubernetes cluster, [such as Amazon EKS](https://aws.amazon.com/getting-started/projects/deploy-kubernetes-app-amazon-eks/). Please note that it's very expensive. I personally don't have the budget to run a real EKS cluster, but if you're a company and want to support this project, drop me a line.
  
 ### What's planned for the future?
-Please refer to TODO.md for a simple project roadmap.
+Please refer to [TODO.md](https://github.com/yanivp/kuberfest/blob/master/TODO.md) for a simple project roadmap.
  
 ### Does my project need to be written in Python?
 Kuberfest is programming language and framework agnostic. Kuberfest itself is built in Python 3.6.
