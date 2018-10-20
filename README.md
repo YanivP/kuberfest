@@ -63,7 +63,7 @@ Contains important definitions about your project.
 ### Through the project:
 `./kbf --help` will get you all possible commands.
 
-For starters, you can try `kbf dotnet_demo_project --start_minikube --deploy --development --init_db` which will make sure minikube is started, generate and deploy the yamls, and init the db.
+For starters, you can try `./kbf dotnet_demo_project --start_minikube --deploy --development --init_db` which will make sure minikube is started, generate and deploy the yamls, and init the db.
 
 ### Through pip installation ###
 WIP
