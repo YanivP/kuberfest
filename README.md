@@ -77,6 +77,14 @@ Contains important definitions about your project.
 
 If you got all the way here, congrats! If not, drop me a note.
 
+## Where to go from here?
+The dmeo project you ran in the step before uses a Docker container which was pre-built for the purpose of the demo. If you want to build your own Docker container, you'll have to edit the relevant files and direct the project to your own Dockerhub account.
+
+1. Edit the `image` value in `docker-compose.yaml` to your own repository.
+1. Edit the `REPOSITORY` value in the demo project's `./kuberfest/variables.py` to the same repository.
+1. Run `kbf . --build --push` to build and push your new container.
+1. Run the same commands such as `kbf . --start_minikube --deploy --development --init_db` to see that everything is running correctly.
+
 ## Motivation
 This framework is developed as a way to thoroughly study Kubernetes and on-the-way automate some of the processes in professional projects I'm working on. If you have any comments on the way I'm doing things don't hesitate to shoot me an email :)
 
