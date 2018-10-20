@@ -1,5 +1,8 @@
-pyyaml>=0
+# Packaging requirements
 setuptools>=0
 wheel>=0
 twine>=0
 tqdm>=0
+
+# Kuberfest requirements
+pyyaml>=0
