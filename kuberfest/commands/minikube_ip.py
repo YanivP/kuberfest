@@ -1,6 +1,6 @@
 import os
 import settings
-import kuberfest2.commands
+import kuberfest.commands
 from kuberfest.tools.debug import Debug
 
 
