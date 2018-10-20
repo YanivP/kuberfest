@@ -86,7 +86,7 @@ This framework is developed as a way to thoroughly study Kubernetes and on-the-w
 3. Install the base dependencies mentioned above.
 4. Optionally, run a Kubernetes cluster, [such as Amazon EKS](https://aws.amazon.com/getting-started/projects/deploy-kubernetes-app-amazon-eks/). Please note that it's very expensive.
  
-### TODO
+### What's planned for the future?
 Please refer to TODO.md for a simple project roadmap.
  
 ### Does my project need to be written in Python?
