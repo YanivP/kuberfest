@@ -91,7 +91,7 @@ This framework is developed as a way to thoroughly study Kubernetes and on-the-w
 1. Learn [how to dockerize your application](https://docs.docker.com/engine/reference/builder/).
 1. Learn [how to configure a kubernetes cluster](https://kubernetes.io/docs/concepts/configuration/).
 1. Install the base dependencies mentioned above.
-1. Optionally, run a Kubernetes cluster, [such as Amazon EKS](https://aws.amazon.com/getting-started/projects/deploy-kubernetes-app-amazon-eks/). Please note that it's very expensive.
+1. Optionally, run a Kubernetes cluster, [such as Amazon EKS](https://aws.amazon.com/getting-started/projects/deploy-kubernetes-app-amazon-eks/). Please note that it's very expensive. I personally don't have the budget to run a real EKS cluster, but if you're a company and want to support this project, drop me a line.
  
 ### What's planned for the future?
 Please refer to TODO.md for a simple project roadmap.
