@@ -108,7 +108,7 @@ Kuberfest is programming language and framework agnostic. Kuberfest itself is bu
 ### Why is the demo project written in DotNet Core?
 This is simply a first of multiple POCs that will come later once the framework is more mature. I like C# and wanted to understand the Entity Framework on the way.
 
-#### Credits and licenses
-Kubernetes is free to use for any purpose. Just keep it legal.
+## Credits and licenses
+Kubernetes is free to use for any purpose. Just give proper credits and keep it legal.
 
 The beer logo is licensed creative commons as mentioned in [the source page](https://www.svgrepo.com/svg/14897/beer). It was manipulated to add the "K" letter on top of the beer bug and the "Kuberfest" name besides it.
