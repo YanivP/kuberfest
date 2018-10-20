@@ -89,7 +89,7 @@ This framework is developed as a way to thoroughly study Kubernetes and on-the-w
 
 ## QA
 ### Why is it called Kuberfest?
-Kuberfest uses Kubernetes (Kuber), is meant to allow fast development (fest), and should be celebrated like Oktoberfest. It also sounds really cool.
+Kuberfest uses Kubernetes (Kuber), is meant to allow fast development (fest), and so would save time for celebrations like Oktoberfest. It also sounds really cool.
 
 ### What do I need to know before using Kuberfest?
 1. Learn [how to dockerize your application](https://docs.docker.com/engine/reference/builder/).
