@@ -17,7 +17,7 @@ Kuberfest is programming language and framework agnostic. Kuberfest itself is bu
 ## Current version
 0.0.1a (do not use this for anything yet)
 
-## Requirements
+## Dependencies
 * pip
 * Python 3.6
 * kubectl
@@ -59,14 +59,16 @@ Can contain variables to be re-used in the Kubernetes yamls
 
 Contains important definitions about your project.
 
-## How to use Kuberfest framework
-### Through the project:
-`./kbf --help` will get you all possible commands.
+## How to get the demo project running
+1. As with most Python projects, it's best to use a container such as `virtualenv` to avoid conflicts with other projects.
+2. Install base dependencies mentioned above. 
+3. Open a terminal and navigate to the project root folder.
+4. Install project requirements: `pip install -r requirements.txt`
+5. Run `./kbf --help` to see that you're able to display the help.
+6. Run `./kbf dotnet_demo_project --start_minikube --deploy --development --init_db` which will make sure minikube is started, generate and deploy the yamls, and init the db.
+7. You should see the message: `You can access the app through: http://x.x.x.x:x/api/values`. Copy that URL to your browser and see if you're getting a response from the API.
 
-For starters, you can try `./kbf dotnet_demo_project --start_minikube --deploy --development --init_db` which will make sure minikube is started, generate and deploy the yamls, and init the db.
-
-### Through pip installation ###
-WIP
+If you got all the way here, congrats!
 
 ## Motivation
 This framework is developed as a way to thoroughly study Kubernetes and on-the-way automate some of the processes in professional projects I'm working on. If you have any comments on the way I'm doing things don't hesitate to shoot me an email :)
