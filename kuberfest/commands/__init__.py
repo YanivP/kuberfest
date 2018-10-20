@@ -172,7 +172,6 @@ class CommandsController:
         return CommandsController.parsed_arguments
 
     def _run_command(self, command, values, module_base):
-        Debug.info("--- Running command '{}'...".format(command))
         i = importlib.import_module('{}.{}'.format(module_base, command))
         result = i.run(self.project, values)
         if not result:
@@ -200,5 +199,3 @@ class CommandsController:
             if not self._run_command(command, parsed_arguments[command], 'commands'):
                 Debug.error('Stopped with partial results.')
                 return
-
-        
