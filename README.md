@@ -109,4 +109,4 @@ Kuberfest is programming language and framework agnostic. Kuberfest itself is bu
 This is simply a first of multiple POCs that will come later once the framework is more mature. I like C# and wanted to understand the Entity Framework on the way.
 
 ### Credits and licenses
-The beer logo is licensed creative commons as mentioned in [the source page](https://www.svgrepo.com/svg/14897/beer)
+The beer logo is licensed creative commons as mentioned in [the source page](https://www.svgrepo.com/svg/14897/beer). It was manipulated to add the "Kuberfest" name besides it.
