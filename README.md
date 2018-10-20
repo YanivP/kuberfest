@@ -70,12 +70,20 @@ Contains important definitions about your project.
 1. As with most Python projects, it's best to use a container such as `virtualenv` to avoid conflicts with other projects.
 1. Create a folder and copy the content of the `dotnet_demo_project` into it.
 1. Open a terminal and navigate into it.
-1. `pip install kuberfest`
+1. Run `pip install kuberfest`
 1. Run `kbf --help` to see that you're able to display the help.
-1. Run `kbf dotnet_demo_project --start_minikube --deploy --development --init_db` which will make sure minikube is started, generate and deploy the yamls, and init the db.
+1. Run `kbf . --start_minikube --deploy --development --init_db` which will make sure minikube is started, generate and deploy the yamls, and init the db.
 1. You should see the message: `You can access the app through: http://x.x.x.x:x/api/values`. Copy that URL to your browser and see if you're getting a response from the API.
 
 If you got all the way here, congrats! If not, drop me a note.
+
+## Where to go from here?
+The demo project you ran in the step before uses a Docker container which was pre-built for the purpose of the demo. If you want to build your own Docker container, you'll have to edit the relevant files and direct the project to your own Dockerhub account.
+
+1. Edit the `image` value in `docker-compose.yaml` to your own repository.
+1. Edit the `REPOSITORY` value in the demo project's `./kuberfest/variables.py` to the same repository.
+1. Run `kbf . --build --push` to build and push your new container.
+1. Run the same commands such as `kbf . --start_minikube --deploy --development --init_db` to see that everything is running correctly.
 
 ## Motivation
 This framework is developed as a way to thoroughly study Kubernetes and on-the-way automate some of the processes in professional projects I'm working on. If you have any comments on the way I'm doing things don't hesitate to shoot me an email :)
