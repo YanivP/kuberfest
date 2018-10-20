@@ -72,6 +72,7 @@ Contains important definitions about your project.
 1. Run `kbf --help` to see that you're able to display the help.
 1. Run `kbf . --start_minikube --deploy --development --init_db` which will make sure minikube is started, generate and deploy the yamls, and init the db.
 1. You should see the message: `You can access the app through: http://x.x.x.x:x/api/values`. Copy that URL to your browser and see if you're getting a response from the API.
+1. To test if the database is working, try calling `http://x.x.x.x:x/api/values/1` to see that it inserts a new row with the value `1`. Calling the same API again should result in an index error (by design).
 
 If you got all the way here, congrats! If not, drop me a note.
 
