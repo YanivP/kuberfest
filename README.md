@@ -88,6 +88,9 @@ The demo project you ran in the step before uses a Docker container which was pr
 This framework is developed as a way to thoroughly study Kubernetes and on-the-way automate some of the processes in professional projects I'm working on. If you have any comments on the way I'm doing things don't hesitate to shoot me an email :)
 
 ## QA
+### Why is it called Kuberfest?
+Kuberfest uses Kubernetes (Kuber), is meant to allow fast development (fest), and should be celebrated like Oktoberfest. It also sounds really cool.
+
 ### What do I need to know before using Kuberfest?
 1. Learn [how to dockerize your application](https://docs.docker.com/engine/reference/builder/).
 1. Learn [how to configure a kubernetes cluster](https://kubernetes.io/docs/concepts/configuration/).
