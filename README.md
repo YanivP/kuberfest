@@ -19,21 +19,23 @@ Kuberfest is programming language and framework agnostic. Kuberfest itself is bu
 
 ## Dependencies
 * pip
-* Python 3.6
-* kubectl
-* Minikube (tested with virtualbox)
+* Python 3.6 (I suggest that you use a virtualenv)
+* [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+* [Minikube](https://kubernetes.io/docs/setup/minikube/) (tested with virtualbox)
 
 Tested on 'MacOSX 10.13.6'
 
 ## Installation
-TODO: pip installation instructions
+TODO: pip package installation instructions
 
 ## Project structure
 
+### Framework
 `./kuberfest/`
 
 This is the framework folder, contains all base framework logic.
 
+### On your own project (demo project for example)
 `./dotnet_demo_project/kuberfest/`
 
 This folder needs to be put into your project (in our example: dotnet_demo_project).
