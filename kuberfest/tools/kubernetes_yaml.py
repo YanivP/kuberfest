@@ -3,7 +3,7 @@ import os
 import yaml as yaml_module
 
 
-class YamlTool(BaseTool):
+class KubernetesYamlTool(BaseTool):
     '''
     Tool for reading, manipulating and parsing Kubernetes related yaml files.
     '''
