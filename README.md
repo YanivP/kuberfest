@@ -1,4 +1,4 @@
-![image](https://user-images.githubusercontent.com/2112284/47258323-5fb09a80-d4a2-11e8-8fee-e10b4ab516f1.png)
+![kuberfest_logo](https://user-images.githubusercontent.com/2112284/47258411-74416280-d4a3-11e8-8a30-d9df13fb9333.png)
 
 # Kuberfest Framework (WIP)
 A lightweight framework for fast cloud development.
